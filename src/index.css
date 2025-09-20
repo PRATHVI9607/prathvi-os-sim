@@ -116,14 +116,12 @@
   
   .os-app-icon {
     @apply relative flex flex-col items-center justify-center p-4 rounded-2xl cursor-pointer transition-all duration-300;
-    background: var(--os-app-icon-bg);
-    box-shadow: var(--os-shadow);
+    background: transparent;
   }
   
   .os-app-icon:hover {
     @apply scale-105;
-    background: var(--os-app-icon-hover);
-    box-shadow: var(--os-glow);
+    background: hsl(var(--foreground) / 0.1);
   }
   
   .os-window {
