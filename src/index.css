@@ -2,41 +2,56 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* PrathviOS Design System - Sky and Night modes */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
+    /* Sky Mode - Light theme with sky blue gradients */
+    --os-sky-bg-primary: 195 100% 85%;
+    --os-sky-bg-secondary: 200 100% 75%;
+    --os-sky-text-primary: 220 25% 15%;
+    --os-sky-text-secondary: 220 15% 35%;
+    --os-sky-glass: 210 50% 90%;
+    --os-sky-glass-border: 210 30% 80%;
+    
+    /* Night Mode - Dark theme with deep blue gradients */
+    --os-night-bg-primary: 235 45% 15%;
+    --os-night-bg-secondary: 240 55% 8%;
+    --os-night-text-primary: 210 40% 98%;
+    --os-night-text-secondary: 215 20% 85%;
+    --os-night-glass: 235 35% 20%;
+    --os-night-glass-border: 235 25% 30%;
+    
+    /* Default to sky mode */
+    --background: hsl(var(--os-sky-bg-primary));
+    --foreground: hsl(var(--os-sky-text-primary));
+    --card: hsl(var(--os-sky-glass) / 0.8);
+    --card-foreground: hsl(var(--os-sky-text-primary));
+    --popover: hsl(var(--os-sky-glass));
+    --popover-foreground: hsl(var(--os-sky-text-primary));
+    --primary: hsl(var(--os-sky-text-primary));
+    --primary-foreground: hsl(var(--os-sky-bg-primary));
+    --secondary: hsl(var(--os-sky-glass));
+    --secondary-foreground: hsl(var(--os-sky-text-primary));
+    --muted: hsl(var(--os-sky-glass) / 0.5);
+    --muted-foreground: hsl(var(--os-sky-text-secondary));
+    --accent: hsl(var(--os-sky-glass));
+    --accent-foreground: hsl(var(--os-sky-text-primary));
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    --border: hsl(var(--os-sky-glass-border));
+    --input: hsl(var(--os-sky-glass));
+    --ring: hsl(var(--os-sky-text-primary));
+    --radius: 0.75rem;
+    
+    /* OS-specific variables */
+    --os-desktop-gradient: linear-gradient(135deg, hsl(var(--os-sky-bg-primary)), hsl(var(--os-sky-bg-secondary)));
+    --os-taskbar-bg: hsl(var(--os-sky-glass) / 0.9);
+    --os-window-bg: hsl(var(--os-sky-glass) / 0.95);
+    --os-app-icon-bg: hsl(var(--os-sky-glass) / 0.7);
+    --os-app-icon-hover: hsl(var(--os-sky-glass));
+    --os-shadow: 0 8px 32px hsl(var(--os-sky-text-primary) / 0.15);
+    --os-glow: 0 0 20px hsl(var(--os-sky-bg-secondary) / 0.5);
 
     --sidebar-background: 0 0% 98%;
 
@@ -55,42 +70,71 @@ All colors MUST be HSL.
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+  .night-mode {
+    /* Night mode theme variables */
+    --background: hsl(var(--os-night-bg-primary));
+    --foreground: hsl(var(--os-night-text-primary));
+    --card: hsl(var(--os-night-glass) / 0.8);
+    --card-foreground: hsl(var(--os-night-text-primary));
+    --popover: hsl(var(--os-night-glass));
+    --popover-foreground: hsl(var(--os-night-text-primary));
+    --primary: hsl(var(--os-night-text-primary));
+    --primary-foreground: hsl(var(--os-night-bg-primary));
+    --secondary: hsl(var(--os-night-glass));
+    --secondary-foreground: hsl(var(--os-night-text-primary));
+    --muted: hsl(var(--os-night-glass) / 0.5);
+    --muted-foreground: hsl(var(--os-night-text-secondary));
+    --accent: hsl(var(--os-night-glass));
+    --accent-foreground: hsl(var(--os-night-text-primary));
+    --border: hsl(var(--os-night-glass-border));
+    --input: hsl(var(--os-night-glass));
+    --ring: hsl(var(--os-night-text-primary));
+    
+    /* Night mode OS variables */
+    --os-desktop-gradient: linear-gradient(135deg, hsl(var(--os-night-bg-primary)), hsl(var(--os-night-bg-secondary)));
+    --os-taskbar-bg: hsl(var(--os-night-glass) / 0.9);
+    --os-window-bg: hsl(var(--os-night-glass) / 0.95);
+    --os-app-icon-bg: hsl(var(--os-night-glass) / 0.7);
+    --os-app-icon-hover: hsl(var(--os-night-glass));
+    --os-shadow: 0 8px 32px hsl(0 0% 0% / 0.4);
+    --os-glow: 0 0 20px hsl(var(--os-night-bg-secondary) / 0.8);
+  }
+}
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+@layer components {
+  /* OS Desktop styles */
+  .os-desktop {
+    @apply min-h-screen overflow-hidden relative;
+    background: var(--os-desktop-gradient);
+  }
+  
+  .os-glass {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border) / 0.2);
+  }
+  
+  .os-app-icon {
+    @apply relative flex flex-col items-center justify-center p-4 rounded-2xl cursor-pointer transition-all duration-300;
+    background: var(--os-app-icon-bg);
+    box-shadow: var(--os-shadow);
+  }
+  
+  .os-app-icon:hover {
+    @apply scale-105;
+    background: var(--os-app-icon-hover);
+    box-shadow: var(--os-glow);
+  }
+  
+  .os-window {
+    @apply absolute rounded-lg border backdrop-blur-md;
+    background: var(--os-window-bg);
+    box-shadow: var(--os-shadow);
+  }
+  
+  .os-taskbar {
+    @apply fixed bottom-0 left-0 right-0 h-16 flex items-center justify-between px-4 backdrop-blur-md border-t;
+    background: var(--os-taskbar-bg);
   }
 }
 
